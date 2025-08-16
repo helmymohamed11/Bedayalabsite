@@ -1,0 +1,52 @@
+{
+  "name": "bidaya-lab-portal",
+  "version": "1.0.0",
+  "description": "نظام إدارة شامل لمعمل بداية للتحاليل الطبية",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w apps/backend\" \"npm run dev -w apps/frontend\" \"npm run dev -w apps/admin\"",
+    "build": "npm run build -w packages/database && npm run build -w apps/backend && npm run build -w apps/frontend && npm run build -w apps/admin",
+    "start": "npm run start -w apps/backend",
+    "lint": "npm run lint -w apps/backend && npm run lint -w apps/frontend && npm run lint -w apps/admin",
+    "type-check": "npm run type-check -w apps/backend && npm run type-check -w apps/frontend && npm run type-check -w apps/admin",
+    "test": "npm run test -w apps/backend",
+    "db:setup": "npm run db:reset -w apps/backend && npm run db:seed -w apps/backend",
+    "db:reset": "npm run db:reset -w apps/backend",
+    "db:seed": "npm run db:seed -w apps/backend",
+    "csv:import": "npm run csv:import -w apps/backend",
+    "docker:up": "cd docker && docker-compose up -d",
+    "docker:down": "cd docker && docker-compose down",
+    "docker:logs": "cd docker && docker-compose logs -f",
+    "clean": "npm run clean -w apps/backend && npm run clean -w apps/frontend && npm run clean -w apps/admin",
+    "fresh-install": "rm -rf node_modules apps/*/node_modules packages/*/node_modules && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/bidaya-lab-portal.git"
+  },
+  "keywords": [
+    "medical-lab",
+    "healthcare",
+    "laboratory",
+    "booking-system",
+    "medical-tests",
+    "typescript",
+    "react",
+    "nextjs",
+    "express",
+    "postgresql"
+  ],
+  "author": "معمل بداية للتحاليل الطبية",
+  "license": "MIT"
+}
